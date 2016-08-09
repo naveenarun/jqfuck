@@ -1,0 +1,144 @@
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <title>JQFuck - Write any JavaScript with 6 Characters and JQuery: $[]()!+</title>
+  <meta name="description" content="JQFuck is a futuristic and educational programming style based on the atomic parts of JavaScript. Besides jQuery calls, it uses only six different characters to execute code.">
+  <meta charset="utf-8" />
+  <meta property="og:image" content="./preview.png" />
+  <meta name="viewport" content="width=device-width" />
+  <style>
+    
+    body {
+      padding: 20px;
+    }
+    
+    body, * {
+      font-family: monospace;
+      font-size: 14px;
+      line-height: 1.4em;
+    }
+    
+    h1 {
+      font-size: 2em;
+      position: absolute;
+      top: 70px;
+      font-weight: normal;
+      left: 140px;
+    }
+    
+    h2 {
+      width: 90px;
+      text-align: right;
+      padding: 50px 5px 5px;
+      background: #74A7FE;
+      color: #323230;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 1em;
+    }
+    
+    h3 {
+      font-weight: bold;
+    }
+        
+    p, li, textarea, .actions {
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    textarea {
+      display: block;
+      height: 200px;
+      margin: 1em 0;
+    }
+    
+    ul.pre li{
+      white-space: pre;
+    }
+    
+    .checkbox {
+      display: inline-block;
+    }
+    
+    .actions a {
+      float: right;
+    }
+    
+    .actions {
+      clear: both;
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>JQFuck</h1>
+  
+  <h2>$()<br>?[]</h2>
+
+  <p>JQFuck creates working code from your Javascript.</p> 
+  <p>jQuery has long been known as the <a href="./jquery_math.gif">plugin of choice</a> for routine JS operations. Recent developments have led to the creation of <a href="https://github.com/baphomet-berlin/jQuery-basic-arithmetic-plugin">rich content libraries</a> enabling variable manipulation via jQuery, thus allowing for the development and deployment of sophisticated, DRY web applications.</p>
+  <p>JQFuck represents a postmodern shift from DRY to RY. As a futuristic and educational programming style, it is based on the atomic parts of JavaScript and is implemented only with jQuery calls and six non-alphanumeric characters.</p>
+ 
+  <p>Use the form below to convert your own script. Uncheck "eval source" to
+  get back a plain string.</p>
+
+  <input id="input" type="text" value="alert(1)"/> 
+  <button id="encode" type="text">Encode</button>
+  
+  <div class="checkbox">
+    <input id="eval" type="checkbox" checked />
+    <label for="eval">Eval Source</label>
+  </div>
+    <div class="checkbox">
+    <input id="scope" type="checkbox" checked />
+    <label for="scope">Run In Parent Scope</label>
+  </div>
+  
+  <textarea id="output"></textarea>
+  <div class="actions">
+    <span id="stats">…</span>
+    <a id="run" href="#">Run This</a>
+  </div>
+  
+  <h3>Links</h3>
+
+  <ul>
+    <li>Forked from <a href="http://www.jsfuck.com">JSFuck</a></li>
+    <li>Developed by <a href="http://github.com/naveenarun">Naveen Arun</a></li>
+  </ul>
+  
+  <h3>Basics</h3>
+  
+  <p>See the full list <a href="https://github.com/aemkei/jsfuck/blob/master/jsfuck.js">here</a>.</p>
+
+  <script src="jqfuck.js"></script>
+  <script>
+
+    function $(id){
+      return document.getElementById(id);
+    }
+    
+    function encode(){
+      var output = JSFuck.encode($("input").value, $("eval").checked, $("scope").checked);
+      $("output").value = output;
+      $("stats").innerHTML = output.length + " chars";
+    }
+  
+    $("encode").onclick = encode;
+    $("eval").onchange = encode;
+    $("scope").onchange = encode;
+    
+    encode();
+    
+    $("run").onclick = function(){
+      value = eval($("output").value);
+
+      if (!$("eval").checked){
+        alert('"' + value + '"');
+      }
+      return false;
+    };
+  </script>
+  
+</body>
+</html>
