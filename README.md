@@ -1,6 +1,6 @@
 # JQFuck `$[]()!+`
 
-JQFuck is based on JSFuck, so the docs below document how JSFuck works.
+JQFuck is based on JSFuck, so the information below (from JSFuck) illustrates how JSFuck works.
 
 JSFuck is an esoteric and educational programming style based on the atomic parts of JavaScript. It uses only six different characters to write and execute code.
 
